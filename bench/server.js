@@ -36,11 +36,16 @@ const { fork, execFileSync } = require('child_process');
 // What the driver sees of each target (hood curve, BMW's gear box and belt light, the HUD window):
 // one source of truth, shared with the app's layout check. The page gets it in the 'hello' event.
 const visible = require('../shared/visible');
+// what each effect shader asks of the KOMBI's GPU against shaders that ran or failed on cars (tools/shader_budget.js)
+const shaderBudget = require('../tools/shader_budget');
 
 const PORT = Number(process.env.BENCH_PORT) || 8078;
 // BENCH_LAYER_CAP: the car seems to draw only an app's first 8 layers (photos, Nov 5 2026).
 // 0 = unlimited. Layers past the cap get state 'waiting' and are not drawn. POST /cap sets it live.
 let layerCap = Math.max(0, Number(process.env.BENCH_LAYER_CAP) || 0);
+// BENCH_STALL_MS: an image layer reports "stalled" (no content yet, as cluster-render does until its first pixels are
+// uploaded) for this long after it is made, then "shown". 0 (default) = shown at once.
+const STALL_MS = Math.max(0, Number(process.env.BENCH_STALL_MS) || 0);
 // The service's other two limits, always on (CompositorLimits): 32 layers across every connection, and 16 MiB of
 // pixel memory for every image together, each image counted twice (Compositor::add_image), refused with the
 // service's own words "the service's pixel memory is full". BENCH_PIXEL_MIB overrides the 16 (0 = unlimited).
@@ -107,7 +112,7 @@ function sceneMeta() {
 }
 function helloMsg() {
     return { t: 'hello', targets: TARGETS, view: appView(), app: APP_ID, cap: layerCap, pixelCap: PIXEL_BYTES,
-        geometry: { HOOD: visible.HOOD, BLACK_BOX: visible.BLACK_BOX, BELT: visible.BELT, HUD_WINDOW: visible.HUD_WINDOW, HUD_BMW: visible.HUD_BMW } };
+        geometry: { HOOD: visible.HOOD, BELT: visible.BELT, HUD_WINDOW: visible.HUD_WINDOW, HUD_BMW: visible.HUD_BMW, CAMERA: visible.CAMERA } };
 }
 let sceneTimer = null;
 function sceneChanged() {
@@ -244,12 +249,19 @@ const renderServer = net.createServer((sock) => {
                 } else if (m.kind === 'effect') {
                     if (!m.fs) return refuse('layer', m.ref, 'effect without fs');
                     nl.fs = m.fs; nl.time = !!m.time; nl.binds = {};
+                    try {
+                        const b = shaderBudget.layer(m.fs, nl.w, nl.h, m.target);
+                        if (b.level !== 'ok') log('warn', 'layer ' + m.ref + ' (effect ' + nl.w + 'x' + nl.h + ') shader budget: ' + b.text);
+                    } catch (e) { log('warn', 'layer ' + m.ref + ': shader budget check failed: ' + e.message); }
                 } else {
                     log('warn', 'layer ' + m.ref + ': kind ' + m.kind + ' is not drawn by the bench');
                 }
                 layers.set(key, nl);   // its visibility warnings (hood, gear box, belt light, HUD window) ride along in sceneMeta()
                 if (nl.state === 'waiting') writeEv(sock, { ev: 'layer', ref: m.ref, state: 'waiting', reason: nl.reason });
-                else writeEv(sock, { ev: 'layer', ref: m.ref, state: 'shown' });
+                else if (STALL_MS && m.kind === 'image') {
+                    writeEv(sock, { ev: 'layer', ref: m.ref, state: 'stalled', reason: 'bench: no frame yet' });
+                    setTimeout(() => { if (layers.get(key) === nl && !sock.destroyed) writeEv(sock, { ev: 'layer', ref: m.ref, state: 'shown' }); }, STALL_MS);
+                } else writeEv(sock, { ev: 'layer', ref: m.ref, state: 'shown' });
                 sceneChanged();
                 return;
             }
@@ -361,7 +373,8 @@ const renderServer = net.createServer((sock) => {
 
 let child = null;
 let signals = { t: 'signals', mode: 'demo', values: {} };
-let drive = { t: 'drive', value: null };   // the drive mode buttons (FES actualValueModeDrivingExperience), null = car hasn't said
+let drive = { t: 'drive', value: null };
+let fakeNav = null;                         // the fake route (POST /nav, fake-nav.js), replayed to a restarted app   // the drive mode buttons (FES actualValueModeDrivingExperience), null = car hasn't said
 let restartTimer = null;
 let stopping = false;
 
@@ -392,6 +405,7 @@ function startApp() {
     child = fork(path.join(__dirname, 'run-app.js'), [STAGE, DATA_DIR], opts);
     const c = child;
     if (drive.value !== null) c.send(drive);
+    if (fakeNav) c.send(fakeNav);
     const pipe = (stream, level) => {
         let rest = '';
         stream.on('data', (d) => {
@@ -495,6 +509,22 @@ const web = http.createServer(async (req, res) => {
         if (!child) { res.writeHead(409); return res.end('app not running'); }
         child.send({ t: 'shiftTest' });
         log('info', 'bench: shift-light test');
+        res.writeHead(204); return res.end();
+    }
+    if (req.method === 'POST' && url === '/nav') {
+        // a fake route for the HUD's directions (fake-nav.js): turn, roundabout, lanes, then, uturn, off
+        const b = await body(req);
+        fakeNav = { t: 'nav', scenario: String(b.scenario || 'off') };
+        if (child) child.send(fakeNav);
+        log('info', 'bench: directions ' + fakeNav.scenario);
+        res.writeHead(204); return res.end();
+    }
+    if (req.method === 'POST' && url === '/demo') {
+        // the page's "Play demo" / "Stop demo" button (hud.playDemo / hud.stopDemo); body { play: true | false, at: ms into the show }
+        const b = await body(req);
+        if (!child) { res.writeHead(409); return res.end('app not running'); }
+        child.send({ t: 'demo', play: b.play !== false, at: Number(b.at) || 0 });
+        log('info', 'bench: ' + (b.play !== false ? 'play' : 'stop') + ' the demo');
         res.writeHead(204); return res.end();
     }
     if (req.method === 'POST' && url === '/restart') {
