@@ -1,0 +1,11 @@
+{
+  "source": "https://github.com/JackieZ123430/bimmer-lab-apps-cn",
+  "apps": {
+    "cluster_themes": {
+      "path": "apps/cluster_themes",
+      "kitRoot": ".",
+      "version": "0.19.1",
+      "upstreamVersion": "0.19.0"
+    }
+  }
+}
