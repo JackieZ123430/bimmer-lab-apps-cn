@@ -1,0 +1,322 @@
+{
+  "schema": 2,
+  "components": [
+    {
+      "id": "cluster_themes",
+      "kind": "app",
+      "title": "仪表主题",
+      "description": "在仪表中选择主题、驾驶模式外观、数据显示和导航地图布局。",
+      "version": "0.19.1",
+      "artifact": {
+        "name": "cluster_themes@0.19.1.tgz",
+        "size": 2632038,
+        "sha256": "e4951de49d24b16a6227ac9bab6c1445d844bd8faa9bb11d07e6d0dd668a1ee9",
+        "url": "https://github.com/JackieZ123430/MGU-CN-XIAOBAI/releases/download/source-refresh-2026-11-20/cluster_themes%400.19.1.tgz"
+      },
+      "requires": {
+        "cluster-render": "0.5.1"
+      },
+      "uninstallable": true,
+      "mguHmi": [
+        "ID7"
+      ],
+      "icon": "https://raw.githubusercontent.com/JackieZ123430/MGU-CN-XIAOBAI/refs/heads/main/cluster_themes.png",
+      "iconSha256": "01689a8688cafb36e95954753f93d7f3f1070ee9d99352756007decae6f4c6c8",
+      "author": "汉化 小白151"
+    },
+    {
+      "id": "mgu-deploy",
+      "kind": "tool",
+      "title": "安装部署组件",
+      "description": "车机安装部署组件，提供安装、更新、回退和卸载，并保存修改前的快照。",
+      "version": "0.8.27",
+      "artifact": {
+        "name": "mgu-deploy@0.8.27.tgz",
+        "size": 168362,
+        "sha256": "57797407580d4f0c4be234e226d4f51972002adeb1ad718e3cf2ffcd00ea36b6",
+        "url": "https://github.com/robertnisipeanu/mgu-store/releases/download/mgu-deploy%400.8.27/mgu-deploy%400.8.27.tgz"
+      },
+      "texts": {
+        "ar": {
+          "title": "أداة النشر",
+          "description": "تثبّت أدواتنا وتطبيقاتنا على الوحدة الرئيسية وتحدّثها وتستعيد إصداراتها السابقة وتزيلها، مع لقطة قبل كل تغيير"
+        },
+        "cs": {
+          "title": "Nástroj nasazení",
+          "description": "Instaluje, aktualizuje, vrací zpět a odebírá naše nástroje a aplikace na hlavní jednotce a před každou změnou pořizuje snímek"
+        },
+        "da": {
+          "title": "Installationsværktøj",
+          "description": "Installerer, opdaterer, ruller tilbage og fjerner vores værktøjer og apps på hovedenheden, med et snapshot før hver ændring"
+        },
+        "de": {
+          "title": "Deploy-Tool",
+          "description": "Installiert, aktualisiert, setzt zurück und entfernt unsere Tools und Apps auf der Headunit, mit einem Snapshot vor jeder Änderung"
+        },
+        "el": {
+          "title": "Εργαλείο εγκατάστασης",
+          "description": "Εγκαθιστά, ενημερώνει, επαναφέρει και καταργεί τα εργαλεία και τις εφαρμογές μας στην κεντρική μονάδα, με στιγμιότυπο πριν από κάθε αλλαγή"
+        },
+        "es-US": {
+          "title": "Herramienta de implementación",
+          "description": "Instala, actualiza, revierte y elimina nuestras herramientas y apps en la unidad principal, con una instantánea antes de cada cambio"
+        },
+        "es": {
+          "title": "Herramienta de despliegue",
+          "description": "Instala, actualiza, revierte y elimina nuestras herramientas y apps en la unidad principal, con una instantánea antes de cada cambio"
+        },
+        "fi": {
+          "title": "Asennustyökalu",
+          "description": "Asentaa, päivittää, palauttaa ja poistaa työkalumme ja sovelluksemme pääyksikössä ja ottaa tilannevedoksen ennen jokaista muutosta"
+        },
+        "fr-CA": {
+          "title": "Outil de déploiement",
+          "description": "Installe, met à jour, restaure et supprime nos outils et applis sur le système, avec un instantané avant chaque modification"
+        },
+        "fr": {
+          "title": "Outil de déploiement",
+          "description": "Installe, met à jour, restaure et supprime nos outils et apps sur le système, avec un instantané avant chaque modification"
+        },
+        "he": {
+          "title": "כלי הפריסה",
+          "description": "מתקין, מעדכן, משחזר גרסה קודמת ומסיר את הכלים והאפליקציות שלנו במערכת, עם תמונת מצב לפני כל שינוי"
+        },
+        "hu": {
+          "title": "Telepítőeszköz",
+          "description": "Telepíti, frissíti, visszaállítja és eltávolítja eszközeinket és alkalmazásainkat a fejegységen, minden változtatás előtt pillanatképet készítve"
+        },
+        "id": {
+          "title": "Alat deploy",
+          "description": "Menginstal, memperbarui, mengembalikan, dan menghapus alat serta aplikasi kami di head unit, dengan snapshot sebelum setiap perubahan"
+        },
+        "it": {
+          "title": "Strumento di distribuzione",
+          "description": "Installa, aggiorna, ripristina e rimuove i nostri strumenti e app sul sistema, con uno snapshot prima di ogni modifica"
+        },
+        "ja": {
+          "title": "デプロイツール",
+          "description": "ヘッドユニット上の当方のツールとアプリをインストール、アップデート、ロールバック、削除し、変更のたびに事前にスナップショットを作成します"
+        },
+        "ko": {
+          "title": "배포 도구",
+          "description": "헤드 유닛에서 자체 도구와 앱을 설치, 업데이트, 롤백, 제거하며 변경할 때마다 먼저 스냅샷을 만듭니다"
+        },
+        "nb": {
+          "title": "Installasjonsverktøy",
+          "description": "Installerer, oppdaterer, ruller tilbake og fjerner verktøyene og appene våre på hovedenheten, med et øyeblikksbilde før hver endring"
+        },
+        "nl": {
+          "title": "Deploy-tool",
+          "description": "Installeert, werkt bij, zet terug en verwijdert onze tools en apps op de headunit, met een snapshot vóór elke wijziging"
+        },
+        "pl": {
+          "title": "Narzędzie wdrażania",
+          "description": "Instaluje, aktualizuje, przywraca i usuwa nasze narzędzia i aplikacje na jednostce głównej, tworząc migawkę przed każdą zmianą"
+        },
+        "pt-BR": {
+          "title": "Ferramenta de implantação",
+          "description": "Instala, atualiza, reverte e remove nossas ferramentas e apps na unidade principal, com um snapshot antes de cada alteração"
+        },
+        "pt": {
+          "title": "Ferramenta de implementação",
+          "description": "Instala, atualiza, reverte e remove as nossas ferramentas e apps na unidade principal, com um instantâneo antes de cada alteração"
+        },
+        "ro": {
+          "title": "Instrument de implementare",
+          "description": "Instalează, actualizează, readuce la versiunea anterioară și elimină instrumentele și aplicațiile noastre de pe unitatea principală, cu un snapshot înaintea fiecărei modificări"
+        },
+        "ru": {
+          "title": "Инструмент установки",
+          "description": "Устанавливает, обновляет, откатывает и удаляет наши утилиты и приложения на головном устройстве, создавая снимок перед каждым изменением"
+        },
+        "sk": {
+          "title": "Nástroj nasadenia",
+          "description": "Inštaluje, aktualizuje, vracia späť a odstraňuje naše nástroje a aplikácie na hlavnej jednotke, pred každou zmenou so snímkou stavu"
+        },
+        "sl": {
+          "title": "Orodje za namestitev",
+          "description": "Namešča, posodablja, povrača in odstranjuje naša orodja in aplikacije na glavni enoti, pred vsako spremembo s posnetkom stanja"
+        },
+        "sv": {
+          "title": "Installationsverktyg",
+          "description": "Installerar, uppdaterar, återställer och tar bort våra verktyg och appar på huvudenheten, med en ögonblicksbild före varje ändring"
+        },
+        "th": {
+          "title": "เครื่องมือติดตั้ง",
+          "description": "ติดตั้ง อัปเดต ย้อนกลับ และลบเครื่องมือและแอปของเราบนเฮดยูนิต พร้อมสแนปช็อตก่อนทุกการเปลี่ยนแปลง"
+        },
+        "tr": {
+          "title": "Dağıtım aracı",
+          "description": "Araçlarımızı ve uygulamalarımızı ana ünitede yükler, günceller, geri alır ve kaldırır; her değişiklikten önce anlık görüntü alır"
+        },
+        "uk": {
+          "title": "Інструмент встановлення",
+          "description": "Встановлює, оновлює, відкочує та видаляє наші утиліти й програми на головному пристрої, створюючи знімок перед кожною зміною"
+        },
+        "vi": {
+          "title": "Công cụ triển khai",
+          "description": "Cài đặt, cập nhật, khôi phục bản trước và gỡ bỏ các công cụ và ứng dụng của chúng tôi trên hệ thống, kèm bản chụp nhanh trước mỗi thay đổi"
+        },
+        "zh-CN": {
+          "title": "部署工具",
+          "description": "在主机上安装、更新、回滚和移除我们的工具和应用，每次更改前都会创建快照"
+        },
+        "zh-TW": {
+          "title": "部署工具",
+          "description": "在主機上安裝、更新、回復及移除我們的工具與應用程式，每次變更前都會建立快照"
+        }
+      }
+    },
+    {
+      "id": "cluster-render",
+      "kind": "tool",
+      "title": "仪表与 HUD 渲染器",
+      "description": "为仪表和 HUD 绘制应用图层，并管理显示位置和上传预算。",
+      "version": "0.6.9",
+      "artifact": {
+        "name": "cluster-render@0.6.9.tgz",
+        "size": 10442325,
+        "sha256": "68e537c06ad0c6a8cc86e0cb21d364f6f1705715538e2dcc75dcf8bc54eaff7d",
+        "url": "https://github.com/robertnisipeanu/idrive-apps/releases/download/cluster-render%400.6.9/cluster-render%400.6.9.tgz"
+      },
+      "requires": {
+        "mgu-deploy": "0.4.0"
+      },
+      "mguHmi": [
+        "ID7",
+        "ID8"
+      ],
+      "uninstallable": true,
+      "texts": {
+        "ar": {
+          "title": "عارض لوحة العدادات",
+          "description": "يرسم طبقات جميع التطبيقات على لوحة العدادات وشاشة HUD، مع مشاركة خانات العرض وحصة رفع واحدة"
+        },
+        "cs": {
+          "title": "Renderer přístrojového štítu",
+          "description": "Kreslí vrstvy všech aplikací na přístrojový štít a HUD a sdílí přitom pozice na displeji a jeden společný rozpočet nahrávání"
+        },
+        "da": {
+          "title": "Instrumentpanel-renderer",
+          "description": "Tegner alle apps' lag på instrumentpanelet og HUD'en og deler visningspladserne og ét fælles uploadbudget"
+        },
+        "de": {
+          "title": "Kombi-Renderer",
+          "description": "Zeichnet die Ebenen aller Apps im Kombiinstrument und im HUD und teilt dabei die Anzeigeplätze und ein gemeinsames Upload-Budget auf"
+        },
+        "el": {
+          "title": "Μηχανή απόδοσης πίνακα οργάνων",
+          "description": "Σχεδιάζει τα επίπεδα όλων των εφαρμογών στον πίνακα οργάνων και στο HUD, μοιράζοντας τις θέσεις της οθόνης και ένα κοινό όριο μεταφόρτωσης"
+        },
+        "es-US": {
+          "title": "Renderizador del tablero",
+          "description": "Dibuja las capas de todas las apps en el tablero de instrumentos y el HUD, compartiendo los espacios de pantalla y un único presupuesto de carga"
+        },
+        "es": {
+          "title": "Renderizador del cuadro",
+          "description": "Dibuja las capas de todas las apps en el cuadro de instrumentos y el HUD, compartiendo los espacios de pantalla y un único presupuesto de carga"
+        },
+        "fi": {
+          "title": "Mittariston piirtäjä",
+          "description": "Piirtää kaikkien sovellusten tasot mittaristoon ja HUD-näyttöön ja jakaa näyttöpaikat ja yhteisen latausbudjetin"
+        },
+        "fr-CA": {
+          "title": "Rendu du combiné",
+          "description": "Dessine les calques de toutes les apps sur le combiné d'instruments et le HUD, en partageant les emplacements d'affichage et un budget de transfert commun"
+        },
+        "fr": {
+          "title": "Rendu du combiné",
+          "description": "Dessine les calques de toutes les apps sur le combiné d'instruments et le HUD, en partageant les emplacements d'affichage et un budget de transfert commun"
+        },
+        "he": {
+          "title": "מנוע התצוגה של לוח המחוונים",
+          "description": "מצייר את השכבות של כל האפליקציות בלוח המחוונים וב-HUD, תוך שיתוף משבצות התצוגה ומכסת העלאה אחת"
+        },
+        "hu": {
+          "title": "Műszerfal-megjelenítő",
+          "description": "Minden alkalmazás rétegeit megjeleníti a műszerfalon és a HUD-on, közösen használva a megjelenítési helyeket és egyetlen feltöltési keretet"
+        },
+        "id": {
+          "title": "Perender panel instrumen",
+          "description": "Menggambar lapisan setiap aplikasi di panel instrumen dan HUD, berbagi slot layar dan satu kuota unggahan"
+        },
+        "it": {
+          "title": "Renderer del quadro",
+          "description": "Disegna i livelli di tutte le app sul quadro strumenti e sull'HUD, condividendo gli slot di visualizzazione e un unico budget di trasferimento"
+        },
+        "ja": {
+          "title": "メーターレンダラー",
+          "description": "すべてのアプリのレイヤーをメーターとHUDに描画し、表示スロットと共通のアップロード枠を共有します"
+        },
+        "ko": {
+          "title": "계기판 렌더러",
+          "description": "모든 앱의 레이어를 계기판과 HUD에 그리며, 디스플레이 슬롯과 하나의 업로드 예산을 공유합니다"
+        },
+        "nb": {
+          "title": "Instrumentpanel-renderer",
+          "description": "Tegner alle appers lag i instrumentpanelet og på HUD-en og deler visningsplassene og ett felles opplastingsbudsjett"
+        },
+        "nl": {
+          "title": "Instrumentpaneel-renderer",
+          "description": "Tekent de lagen van alle apps op het instrumentpaneel en de HUD en verdeelt de weergaveplaatsen en één gedeeld uploadbudget"
+        },
+        "pl": {
+          "title": "Renderer zestawu wskaźników",
+          "description": "Rysuje warstwy wszystkich aplikacji na zestawie wskaźników i wyświetlaczu HUD, dzieląc miejsca na ekranie i jeden wspólny budżet przesyłania"
+        },
+        "pt-BR": {
+          "title": "Renderizador do painel",
+          "description": "Desenha as camadas de todos os apps no painel de instrumentos e no HUD, compartilhando as posições da tela e um único orçamento de envio"
+        },
+        "pt": {
+          "title": "Renderizador do quadrante",
+          "description": "Desenha as camadas de todas as apps no quadrante de instrumentos e no HUD, partilhando as posições do ecrã e um único orçamento de carregamento"
+        },
+        "ro": {
+          "title": "Randare bord",
+          "description": "Desenează straturile tuturor aplicațiilor pe bordul digital și pe HUD, împărțind pozițiile de afișare și un singur buget de transfer"
+        },
+        "ru": {
+          "title": "Рендерер приборной панели",
+          "description": "Отрисовывает слои всех приложений на приборной панели и HUD, распределяя места на экране и общий лимит загрузки"
+        },
+        "sk": {
+          "title": "Vykresľovanie prístrojovej dosky",
+          "description": "Vykresľuje vrstvy všetkých aplikácií na prístrojovej doske a HUD, so spoločnými zobrazovacími pozíciami a jedným spoločným limitom prenosu"
+        },
+        "sl": {
+          "title": "Izris na armaturi",
+          "description": "Izriše plasti vseh aplikacij na armaturni plošči in HUD ter si deli mesta prikaza in en skupni proračun prenosa"
+        },
+        "sv": {
+          "title": "Kombiinstrumentets renderare",
+          "description": "Ritar alla appars lager i kombiinstrumentet och på HUD:en och delar på visningsplatserna och en gemensam uppladdningsbudget"
+        },
+        "th": {
+          "title": "ตัวเรนเดอร์หน้าปัด",
+          "description": "วาดเลเยอร์ของทุกแอปบนหน้าปัดและ HUD โดยใช้ช่องแสดงผลและโควตาการอัปโหลดร่วมกัน"
+        },
+        "tr": {
+          "title": "Gösterge oluşturucu",
+          "description": "Tüm uygulamaların katmanlarını gösterge panelinde ve HUD'da çizer; ekran yuvalarını ve tek bir aktarım bütçesini paylaşır"
+        },
+        "uk": {
+          "title": "Рендерер панелі приладів",
+          "description": "Відображає шари всіх програм на панелі приладів і HUD, розподіляючи місця на екрані та спільний ліміт завантаження"
+        },
+        "vi": {
+          "title": "Trình hiển thị bảng đồng hồ",
+          "description": "Vẽ các lớp của mọi ứng dụng trên bảng đồng hồ và HUD, dùng chung các vị trí hiển thị và một hạn mức tải lên"
+        },
+        "zh-CN": {
+          "title": "仪表盘渲染器",
+          "description": "在仪表盘和 HUD 上绘制所有应用的图层，共享显示槽位和同一上传额度"
+        },
+        "zh-TW": {
+          "title": "儀表板繪製器",
+          "description": "在儀表板與 HUD 上繪製所有應用程式的圖層，共用顯示欄位與同一份上傳額度"
+        }
+      }
+    }
+  ]
+}
